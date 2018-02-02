@@ -1,18 +1,45 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
 import './App.css';
 
+import Card from './components/Card/Card';
+
 class App extends Component {
+  constructor(){
+    super()
+    this.state={
+      randomArray:["A","A","B","B", "C", "C", "D", "D"]
+    }
+  }
+shuffle(array) {
+    var ctr = array.length, temp, index;
+
+// While there are elements in the array
+    while (ctr > 0) {
+// Pick a random index
+        index = Math.floor(Math.random() * ctr);
+// Decrease ctr by 1
+        ctr--;
+// And swap the last element with it
+        temp = array[ctr];
+        array[ctr] = array[index];
+        array[index] = temp;
+    }
+    return array;
+}
+
+componentDidMount(){
+  this.setState({randomArray: this.shuffle(this.state.randomArray)})
+}
+
   render() {
+    const cardList = this.state.randomArray.map(function(elem, index){
+      return <Card face={elem}/>
+    })
     return (
       <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h1 className="App-title">Welcome to React</h1>
-        </header>
-        <p className="App-intro">
-          To get started, edit <code>src/App.js</code> and save to reload.
-        </p>
+        <section className="box">
+          {cardList}
+          </section>
       </div>
     );
   }

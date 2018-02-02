@@ -1,0 +1,19 @@
+.card{
+    margin: 10px;
+    width: 20%;
+    height: 40%;
+    background-color: rgb(132, 157, 241);
+    display: flex;
+    align-content: center;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .hidden_yes{
+      display: none;
+  }
+
+  .hidden_no{
+    display: block;
+}
+  

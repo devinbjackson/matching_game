@@ -2,20 +2,36 @@
     margin: 10px;
     width: 20%;
     height: 23%;
-    background-color: rgb(132, 157, 241);
+    background-color: rgb(219, 224, 243);
     display: flex;
     align-content: center;
     align-items: center;
     justify-content: center;
     font-size: 3em;
     border-radius: 5px;
+    border-style: double;
+    border-width: 3px;
+    border-color: rgb(187, 116, 116);
+    box-sizing: border-box;
+
+    transform-style: preserve-3d;
+    transition: transform 1s;
+  }
+  
+  .card figure {
+    margin: 0;
+    backface-visibility: hidden;
+  }
+  
+  .card .front {
+  }
+  .card .back {
+    transform: rotateY( 180deg );
+    
+  }
+  
+  .flipped {
+    transform: rotateY( 180deg );
   }
 
-  .hidden_yes{
-      display: none;
-  }
-
-  .hidden_no{
-    display: block;
-}
   

@@ -7,34 +7,38 @@ class Card extends Component {
     constructor(props){
         super(props)
         this.state={
-            hidden:'yes'
+            flipped: false
         }
         this.handleClick = this.handleClick.bind(this)
+        this.flip=this.flip.bind(this)
     }
 
 handleClick(face){
+    const flip = this.flip()
     if(this.state.hidden === "yes"){
-    this.setState({hidden: 'no'})
 
         if(!this.props.card1){
         this.props.flipCard1(face)
+        flip
         }else{
         this.props.flipCard2(face)    
         }
     if(this.props.card1 != this.props.card2){
         setTimeout(()=>{this.props.flipCard1('')
         this.props.flipCard2('')
-        this.setState({hidden: 'yes'}), 2000
-    })
+    }, 2000)
     }    
 
     }
 }
-
+flip(){
+    this.setState({flipped: !this.state.flipped})
+  }
   render() {
     return (
-        <div onClick={()=>this.handleClick(this.props.face)} className="card">
-            <div className={`hidden_${this.state.hidden}`}>{this.props.face}</div>
+        <div onClick={()=>{this.handleClick(this.props.face)}} className={`card ${this.state.flipped?"flipped":''}`}>
+            <figure className={`back hidden_${this.state.hidden}`}>{this.props.face}</figure>
+            <figure className="front"></figure>
           </div>
     );
   }

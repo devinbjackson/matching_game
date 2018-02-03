@@ -7,8 +7,10 @@ class App extends Component {
   constructor(){
     super()
     this.state={
-      randomArray:["❤","❤","★","★", "✿", "✿", "♛", "♛", '♣', '♣', '♜', '♜', 'Ⅷ', 'Ⅷ', '⊜', '⊜']
+      randomArray:["❤","❤","★","★", "✿", "✿", "♛", "♛", '♣', '♣', '♜', '♜', 'Ⅷ', 'Ⅷ', '⊜', '⊜'],
+      flipped: false
     }
+    this.flip=this.flip.bind(this)
   }
 shuffle(array) {
     var ctr = array.length, temp, index;
@@ -26,6 +28,9 @@ shuffle(array) {
     }
     return array;
 }
+flip(){
+  this.setState({flipped: !this.state.flipped})
+}
 
 componentDidMount(){
   this.setState({randomArray: this.shuffle(this.state.randomArray)})
@@ -40,6 +45,7 @@ componentDidMount(){
         <section className="box">
           {cardList}
           </section>
+
       </div>
     );
   }

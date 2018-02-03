@@ -28,6 +28,7 @@ export function flipCard1(face) {
     return Object.assign({}, state, { card1: action.payload });
     case FLIP_CARD2:
     return Object.assign({}, state, { card1: action.payload });
-
+    default:
+    return state;    
     }
   }      

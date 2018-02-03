@@ -15,21 +15,20 @@ class Card extends Component {
 
 handleClick(face){
     const flip = this.flip()
-    if(this.state.hidden === "yes"){
-
+    const {flipCard1, flipCard2} = this.props
+console.log("hi")
         if(!this.props.card1){
-        this.props.flipCard1(face)
+            
+        flipCard1(face)
         flip
         }else{
-        this.props.flipCard2(face)    
+        flipCard2(face)    
         }
-    if(this.props.card1 != this.props.card2){
-        setTimeout(()=>{this.props.flipCard1('')
-        this.props.flipCard2('')
-    }, 2000)
+    if(this.props.card1 !== this.props.card2){
+        setTimeout(()=>{flipCard1('')
+        flipCard2('')
+    }, 1000)
     }    
-
-    }
 }
 flip(){
     this.setState({flipped: !this.state.flipped})

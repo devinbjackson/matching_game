@@ -38,7 +38,7 @@ componentDidMount(){
 
   render() {
     const cardList = this.state.randomArray.map(function(elem, index){
-      return <Card face={elem}/>
+      return <Card face={elem} key={index}/>
     })
     return (
       <div className="App">

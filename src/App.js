@@ -7,7 +7,7 @@ class App extends Component {
   constructor(){
     super()
     this.state={
-      randomArray:["A","A","B","B", "C", "C", "D", "D"]
+      randomArray:["❤","❤","★","★", "✿", "✿", "♛", "♛", '♣', '♣', '♜', '♜', 'Ⅷ', 'Ⅷ', '⊜', '⊜']
     }
   }
 shuffle(array) {

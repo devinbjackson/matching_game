@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import './Card.css';
 import {connect} from 'react-redux';
-import { flipCard1, flipCard2} from "../../redux/reducer";
+import { saveCard1, saveCard2} from "../../redux/reducer";
 
 class Card extends Component {
     constructor(props){
@@ -11,39 +11,62 @@ class Card extends Component {
         }
         this.handleClick = this.handleClick.bind(this)
         this.flip=this.flip.bind(this)
-    }
+        this.hide=this.hide.bind(this)
+    } 
 
-handleClick(face){
-    const flip = this.flip()
-    const {flipCard1, flipCard2} = this.props
-console.log("hi")
-        if(!this.props.card1){
-            
-        flipCard1(face)
-        flip
-        }else{
-        flipCard2(face)    
-        }
-    if(this.props.card1 !== this.props.card2){
-        setTimeout(()=>{flipCard1('')
-        flipCard2('')
-    }, 1000)
-    }    
+handleClick(key, face){
+    const flip = this.flip
+    const {saveCard1, saveCard2} = this.props
+    if(!this.state.flipped){
+    
+    
+    if(!this.props.face1 && key !== this.props.key1){
+        flip()
+        saveCard1(key, face)
+    }else if(this.props.face1){
+        flip()
+        saveCard2(key, face)
+    }else if(this.props.face1 && face === this.props.face1){
+        flip()
+        saveCard1('', '')
+        saveCard2('', '')
+    }else if(this.props.face1 && face !== this.props.face1){
+        flip()
+        setTimeout(function(){
+        flip()
+        saveCard1('', '')
+        saveCard2('', '')  
+        }, 1000)
+        
+    }
+}
+
 }
 flip(){
     this.setState({flipped: !this.state.flipped})
   }
+hide(){
+    this.setState({flipped: false})
+}  
+
+componentWillReceiveProps(){
+    if(this.props.face2 && this.props.face1 !== this.props.face2){
+        console.log(this.props.kay)
+      this.hide()
+    }
+}
+
   render() {
     return (
-        <div onClick={()=>{this.handleClick(this.props.face)}} className={`card ${this.state.flipped?"flipped":''}`}>
+        <div onClick={()=>{this.handleClick(this.props.kay, this.props.face)}} className={`card ${this.state.flipped?"flipped":''}`}>
             <figure className={`back hidden_${this.state.hidden}`}>{this.props.face}</figure>
             <figure className="front"></figure>
           </div>
     );
   }
-}
+} 
 
 
 const mapStateToProps = state => state;
 
-export default connect(mapStateToProps, { flipCard1, flipCard2 })(Card);
+export default connect(mapStateToProps, { saveCard1, saveCard2 })(Card);

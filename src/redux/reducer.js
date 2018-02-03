@@ -1,33 +1,35 @@
-const FLIP_CARD1 = "FLIP_CARD1";
-const FLIP_CARD2 = "FLIP_CARD2";
+const SAVE_CARD1 = "SAVE_CARD1";
+const SAVE_CARD2 = "SAVE_CARD2";
 
 
-export function flipCard1(face) {
+export function saveCard1(key, face) {
     return {
-      type: FLIP_CARD1,
-      payload: face
+      type: SAVE_CARD1,
+      payload: {key, face}
     };
   }
 
-  export function flipCard2(face) {
+  export function saveCard2(key, face) {
     return {
-      type: FLIP_CARD2,
-      payload: face
+      type: SAVE_CARD2,
+      payload: {key, face}
     };
   }  
 
   const initialState = {
-    card1: '',
-    card2: ''
+    key1: '',
+    face1: '',
+    key2: '',
+    face2:''
   };
 
 
   export default function reducer(state = initialState, action) {
     switch (action.type) {
-    case FLIP_CARD1:
-    return Object.assign({}, state, { card1: action.payload });
-    case FLIP_CARD2:
-    return Object.assign({}, state, { card2: action.payload });
+    case SAVE_CARD1:
+    return Object.assign({}, state, { key1: action.payload.key, face1: action.payload.face });
+    case SAVE_CARD2:
+    return Object.assign({}, state, { key2: action.payload.key, face2: action.payload.face });
     default:
     return state;    
     }

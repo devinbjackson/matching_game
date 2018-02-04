@@ -1,55 +1,70 @@
-const SAVE_CARD1 = "SAVE_CARD1";
-const SAVE_CARD2 = "SAVE_CARD2";
 const FLIP_CARD = "FLIP_CARD";
-
+const WRONG_CARD = "WRONG_CARD";
 
 function doubleCards(array){
-  for(var i = array.length -1; i >= 0 ; i--){
-    array.push(array[i])
+  var newArray = array.slice().concat(array.slice());
+  for(var i = 0; i < newArray.length ; i++){
+      var obj = {};
+      obj[newArray[i]] = "";
+      newArray.splice(i,1,obj);
   }
-  return array
+  return newArray
 }
 
+  export function flipCard(index, array) {
 
-export function saveCard1(key, face) {
+    const pending = array.filter(function(elem, ind){
+      return (elem[Object.keys(array[ind])[0]] === "flipped pending")})  
+      console.log(pending)
+
+    const face = Object.keys(array[index])[0]
+        const newArray = array.slice();
+        var obj = {};
+
+        if(pending.length && newArray[index][face] === "" && Object.keys(pending[0])[0] === face){
+        obj[face] = "flipped solved";  
+        newArray.splice(index, 1, obj)
+        newArray.splice(newArray.indexOf(pending[0]), 1, obj)
+        }else if(pending.length && newArray[index][face] === ""){
+        obj[face] = "flipped wrong";  
+        newArray.splice(index, 1, obj)
+        }else if(!pending.length && newArray[index][face] === ""){
+        obj[face] = "flipped pending"  
+        newArray.splice(index, 1, obj)  
+        }
     return {
-      type: SAVE_CARD1,
-      payload: {key, face}
+    type: FLIP_CARD,
+    payload: newArray
     };
   }
+  
+  export function wrongCard(index, array) {
+    const pending = array.filter(function(elem, ind){
+      return (elem[Object.keys(array[ind])[0]] === "flipped pending")}) 
 
-  export function saveCard2(key, face) {
+    const face = Object.keys(array[index])[0]
+    const newArray = array.slice();
+    var obj = {};
+    obj[face] = "";  
+    newArray.splice(index, 1, obj)
+    newArray.splice(newArray.indexOf(pending[0]), 1, obj)
     return {
-      type: SAVE_CARD2,
-      payload: {key, face}
+    type: WRONG_CARD,
+    payload: newArray
     };
-  }  
-
-  export function flipCard(index) {
-    return {
-      type: FLIP_CARD,
-      payload: index
-    };
-  }  
+  } 
 
   const initialState = {
-    cardArray:doubleCards(["❤","★","✿","♛",'♣','♜','Ⅷ','⊜']),
-    flippedByIndex:[],
-    key1: '',
-    face1: '',
-    key2: '',
-    face2: ''
+    cardArray:doubleCards([0, 1, 2, 3, 4, 5, 6, 7]),
   };
 
 
   export default function reducer(state = initialState, action) {
     switch (action.type) {
-    case SAVE_CARD1:
-    return Object.assign({}, state, { key1: action.payload.key, face1: action.payload.face });
-    case SAVE_CARD2:
-    return Object.assign({}, state, { key2: action.payload.key, face2: action.payload.face });
-    case SAVE_CARD2:
-    return Object.assign({}, state, {flippedByIndex: state.flippedByIndex} );
+    case FLIP_CARD :
+    return Object.assign({}, state, {cardArray: action.payload});
+    case WRONG_CARD :
+    return Object.assign({}, state, {cardArray: action.payload});
     default:
     return state; 
     }

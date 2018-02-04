@@ -10,7 +10,6 @@ class App extends Component {
     this.state={
       randomArray:[],
     }
-    this.flip=this.flip.bind(this)
   }
 shuffle(array) {
     var ctr = array.length, temp, index;
@@ -28,9 +27,6 @@ shuffle(array) {
     }
     return array;
 }
-flip(){
-  this.setState({flipped: !this.state.flipped})
-}
 
 componentDidMount(){
   this.setState({randomArray: this.shuffle(this.props.cardArray)})
@@ -38,7 +34,7 @@ componentDidMount(){
 
   render() {
     const cardList = this.state.randomArray.map(function(elem, index){
-      return <Card face={elem} kay={index} key={index}/>
+      return <Card face={Object.keys(elem)[0]} kay={index} key={index}/>
     })
     return (
       <div className="App">

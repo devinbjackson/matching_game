@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import {connect} from 'react-redux';
 import './App.css';
 
 import Card from './components/Card/Card';
@@ -7,8 +8,7 @@ class App extends Component {
   constructor(){
     super()
     this.state={
-      randomArray:["❤","❤","★","★", "✿", "✿", "♛", "♛", '♣', '♣', '♜', '♜', 'Ⅷ', 'Ⅷ', '⊜', '⊜'],
-      flipped: false
+      randomArray:[],
     }
     this.flip=this.flip.bind(this)
   }
@@ -33,7 +33,7 @@ flip(){
 }
 
 componentDidMount(){
-  this.setState({randomArray: this.shuffle(this.state.randomArray)})
+  this.setState({randomArray: this.shuffle(this.props.cardArray)})
 }
 
   render() {
@@ -51,4 +51,6 @@ componentDidMount(){
   }
 }
 
-export default App;
+const mapStateToProps = state => state;
+
+export default connect(mapStateToProps)(App);

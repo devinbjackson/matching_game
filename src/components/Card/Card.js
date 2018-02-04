@@ -20,7 +20,7 @@ handleClick(key, face){
     if(!this.state.flipped){
     
     
-    if(!this.props.face1 && key !== this.props.key1){
+    if(!this.props.face1){
         flip()
         saveCard1(key, face)
     }else if(this.props.face1){

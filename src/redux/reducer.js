@@ -32,7 +32,6 @@ function doubleCards(array){
         obj[face] = "flipped pending"  
         newArray.splice(index, 1, obj)  
         }
-        console.log(pending)
     return {
     type: FLIP_CARD,
     payload: newArray
@@ -48,7 +47,6 @@ function doubleCards(array){
     var obj = {};
     obj[face] = "";  
     newArray.splice(index, 1, obj)
-    console.log(pending)
     var pendObj = {};
     pendObj[Object.keys(pending[0])] = "";  
     newArray.splice(array.indexOf(pending[0]), 1, pendObj)

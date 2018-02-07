@@ -6,6 +6,10 @@ import { flipCard, wrongCard } from "../../redux/reducer";
 class Card extends Component {
     constructor(props){
         super(props)
+        this.state ={
+            flipped:''
+        }
+
         this.handleClick=this.handleClick.bind(this)
     } 
 
@@ -15,21 +19,24 @@ handleClick(){
     const cards = this.props.cardArray
     this.props.flipCard(this.props.kay, cards)
 }
-
-  render() { 
-    const {cardArray, kay, face, wrongCard} = this.props
-    const checkWrong = function(){
-    if(cardArray[kay][face] === "flipped wrong"){
+checkWrong(){
+   const {cardArray, kay, face, wrongCard} = this.props
+   if(cardArray[kay][face] === "flipped wrong"){
      setTimeout(function(){
        wrongCard(kay, cardArray)  
      }, 2000)   
      return cardArray[kay][face]   
     }else {
      return cardArray[kay][face]   
-    }    
-    
-    }  
-    const flipped = checkWrong()
+    }   
+}
+
+componentWillReceiveProps(){
+    this.setState({flipped: this.checkWrong()})
+}
+
+  render() { 
+    const flipped = this.state.flipped
     return (
         <div onClick={this.handleClick} className={`card ${flipped}`}>
             <figure className="back">{this.props.face}</figure>

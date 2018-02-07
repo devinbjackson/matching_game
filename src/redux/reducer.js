@@ -64,6 +64,15 @@ function doubleCards(array){
 
   const initialState = {
     cardArray:doubleCards([0, 1, 2, 3, 4, 5, 6, 7]),
+    cardPictures: {
+    0: 'https://vignette.wikia.nocookie.net/mario/images/4/40/SuperLeafSM3DL.png/revision/latest?cb=20180110005248',
+    1: 'http://moziru.com/images/mario-clipart-flower-power-2.png',
+    2: 'https://vignette.wikia.nocookie.net/nintendo/images/1/12/1upshroom.png/revision/latest?cb=20160922033647&path-prefix=en',
+    3: 'http://vignette1.wikia.nocookie.net/fantendo/images/4/4c/Mushroom_%28Mario_Kart_8%29.png/revision/latest?cb=20141203012138',
+    4: 'https://www.mariowiki.com/images/thumb/f/f5/StarMK8.png/200px-StarMK8.png',
+    5: 'http://img4.wikia.nocookie.net/__cb20120716190352/fantendo/images/1/10/Ice_Flower2.png',
+    6: 'https://vignette2.wikia.nocookie.net/nintendo/images/2/2f/Coin_-_New_Super_Mario_Bros.png/revision/latest?cb=20151206061007&path-prefix=en',
+    7: 'http://img3.wikia.nocookie.net/__cb20131002142100/fantendo/images/8/83/DoubleCherry.png'}
   };
 
 

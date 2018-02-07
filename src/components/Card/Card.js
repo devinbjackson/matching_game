@@ -33,7 +33,7 @@ handleClick(){
     const flipped = checkWrong()
     return (
         <div onClick={this.handleClick} className={`card ${flipped}`}>
-            <figure className="back">{this.props.face}</figure>
+            <figure className="back"><img src={`${this.props.cardPictures[this.props.face]}`}/></figure>
             <figure className="front"></figure>
         </div>
     );

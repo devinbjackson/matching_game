@@ -24,6 +24,8 @@
   }
   
   .card .front {
+    color: white;
+    font-weight: bold;
   }
   .card .back {
     transform: rotateY( 180deg );

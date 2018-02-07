@@ -15,7 +15,7 @@ function doubleCards(array){
 
     const pending = array.filter(function(elem, ind){
       return (elem[Object.keys(array[ind])[0]] === "flipped pending")})  
-      console.log(pending)
+      
 
     const face = Object.keys(array[index])[0]
         const newArray = array.slice();
@@ -32,6 +32,7 @@ function doubleCards(array){
         obj[face] = "flipped pending"  
         newArray.splice(index, 1, obj)  
         }
+        console.log(pending)
     return {
     type: FLIP_CARD,
     payload: newArray
@@ -47,6 +48,13 @@ function doubleCards(array){
     var obj = {};
     obj[face] = "";  
     newArray.splice(index, 1, obj)
+    console.log(pending)
+    var pendObj = {};
+    pendObj[Object.keys(pending[0])] = "";  
+    newArray.splice(array.indexOf(pending[0]), 1, pendObj)
+
+
+
     newArray.splice(newArray.indexOf(pending[0]), 1, obj)
     return {
     type: WRONG_CARD,

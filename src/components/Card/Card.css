@@ -24,8 +24,14 @@
   }
   
   .card .front {
-    color: white;
-    font-weight: bold;
+  position: absolute;
+  width: 100%;
+  height:100%;
+  background-color: rgb(77, 77, 77);
+  background-image: url('http://www.wheel.ie/sites/default/files/icon-with-question-mark-md.png');
+  background-size: 100px;
+  background-position: center;
+  background-repeat: no-repeat;
   }
   .card .back {
     transform: rotateY( 180deg );

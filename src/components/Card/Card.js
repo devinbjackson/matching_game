@@ -40,7 +40,7 @@ componentWillReceiveProps(){
     return (
         <div onClick={this.handleClick} className={`card ${flipped}`}>
             <figure className="back">{this.props.face}</figure>
-            <figure className="front"></figure>
+            <figure className="front">{this.props.kay}</figure>
         </div>
     );
   }

@@ -38,6 +38,8 @@ componentDidMount(){
     })
     return (
       <div className="App">
+        <h1>Match Game!</h1>
+        <h3>Tries Left: {this.props.tries}</h3>
         <section className="box">
           {cardList}
           </section>

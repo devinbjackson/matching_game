@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import './Card.css';
 import {connect} from 'react-redux';
-import { flipCard, wrongCard } from "../../redux/reducer";
+import { flipCard, wrongCard, useTry } from "../../redux/reducer";
 
 class Card extends Component {
     constructor(props){
@@ -18,11 +18,12 @@ handleClick(){
 
   render() { 
       
-    const {cardArray, kay, face, wrongCard} = this.props
+    const {cardArray, kay, face, wrongCard, tries} = this.props
     const checkWrong = function(){
     if(cardArray[kay][face] === "flipped wrong"){
      setTimeout(function(){
-       wrongCard(kay, cardArray)  
+       wrongCard(kay, cardArray)
+       useTry(tries)  
      }, 900)   
      return cardArray[kay][face]   
     }else {
@@ -43,4 +44,4 @@ handleClick(){
 
 const mapStateToProps = state => state;
 
-export default connect(mapStateToProps, { flipCard, wrongCard })(Card);
+export default connect(mapStateToProps, { flipCard, wrongCard, useTry })(Card);

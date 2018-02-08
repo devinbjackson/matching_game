@@ -2,7 +2,7 @@
     margin: 10px;
     width: 20%;
     height: 22.9%;
-    background-color: rgb(219, 224, 243);
+    background-color: rgb(255, 255, 255);
     display: flex;
     align-content: center;
     align-items: center;
@@ -11,12 +11,14 @@
     border-radius: 5px;
     border-style: double;
     border-width: 3px;
-    border-color: rgb(187, 116, 116);
+    border-color: #023C6E;
     box-sizing: border-box;
 
     transform-style: preserve-3d;
     transition: transform 1s;
   }
+
+
   
   .card figure {
     margin: 0;
@@ -27,9 +29,9 @@
   position: absolute;
   width: 100%;
   height:100%;
-  background-color: rgb(77, 77, 77);
-  background-image: url('http://www.wheel.ie/sites/default/files/icon-with-question-mark-md.png');
-  background-size: 100px;
+  background-color: #023C6E;
+  background-image: url('https://www.simonlucasbridgesupplies.co.uk/wp-content/uploads/product_images/pc10g_blue.jpg');
+  background-size: 220px;
   background-position: center;
   background-repeat: no-repeat;
   }

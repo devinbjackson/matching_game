@@ -1,5 +1,6 @@
 const FLIP_CARD = "FLIP_CARD";
 const WRONG_CARD = "WRONG_CARD";
+const USE_TRY = 'USE_TRY';
 
 function doubleCards(array){
   var newArray = array.slice().concat(array.slice());
@@ -56,9 +57,16 @@ function doubleCards(array){
     newArray.splice(newArray.indexOf(pending[0]), 1, obj)
     return {
     type: WRONG_CARD,
-    payload: newArray
+    payload: newArray,
     };
   } 
+
+  export function useTry(tries){
+    return {
+      type: USE_TRY,
+      payload: --tries,
+    }
+  }
 
   const initialState = {
     cardArray:doubleCards([0, 1, 2, 3, 4, 5, 6, 7]),
@@ -70,7 +78,8 @@ function doubleCards(array){
     4: 'https://www.mariowiki.com/images/thumb/f/f5/StarMK8.png/200px-StarMK8.png',
     5: 'http://img4.wikia.nocookie.net/__cb20120716190352/fantendo/images/1/10/Ice_Flower2.png',
     6: 'https://vignette2.wikia.nocookie.net/nintendo/images/2/2f/Coin_-_New_Super_Mario_Bros.png/revision/latest?cb=20151206061007&path-prefix=en',
-    7: 'http://img3.wikia.nocookie.net/__cb20131002142100/fantendo/images/8/83/DoubleCherry.png'}
+    7: 'http://img3.wikia.nocookie.net/__cb20131002142100/fantendo/images/8/83/DoubleCherry.png'},
+    tries: 3
   };
 
 
@@ -80,6 +89,8 @@ function doubleCards(array){
     return Object.assign({}, state, {cardArray: action.payload});
     case WRONG_CARD :
     return Object.assign({}, state, {cardArray: action.payload});
+    case USE_TRY :
+    return Object.assign({}, state, {tries: action.payload});
     default:
     return state; 
     }

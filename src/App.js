@@ -47,7 +47,7 @@ refresh(){
       :
       <div>
         <h1>Match Game!</h1>
-        <h3>Tries Left: {this.props.tries}</h3>
+        <h3>Tries Left <span className='tries' style={{color: this.props.tries === 3?'#023C6E':this.props.tries === 2?'orange':'red'}}  >{this.props.tries}</span></h3>
         <section className="box">
           {cardList}
           </section>

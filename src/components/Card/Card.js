@@ -18,7 +18,7 @@ handleClick(){
 
   render() { 
       
-    const {cardArray, kay, face, wrongCard, tries} = this.props
+    const {cardArray, kay, face, wrongCard, tries, useTry} = this.props
     const checkWrong = function(){
     if(cardArray[kay][face] === "flipped wrong"){
      setTimeout(function(){

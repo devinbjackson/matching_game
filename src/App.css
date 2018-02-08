@@ -17,6 +17,24 @@ body{
   color: white;
 }
 
+.lose{
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-content: center;
+  align-items: center;
+}
+
+.lose h3{
+  background-color: #023C6E;
+  padding: 10px;
+  border-radius: 5px;
+  border-style: ridge;
+  cursor: pointer;
+}
+
 .box{
   margin: 50px 50px;
   width: 700px;
@@ -29,4 +47,9 @@ body{
   padding: 20px;
   flex-wrap: wrap;
   border-radius: 5px;
+  border-style: ridge;
+}
+
+h6{
+  font-weight: 100;
 }
